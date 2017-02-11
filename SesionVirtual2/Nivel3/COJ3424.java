@@ -8,13 +8,12 @@ public class COJ3424{
 		int nCasos = sc.nextInt();
 
 		for(int i=0;i<nCasos;i++){
-			int lengthOfSide = sc.nextInt();
-			int innerAngle = sc.nextInt();
+			double lengthOfSide = sc.nextDouble();
+			double innerAngle = sc.nextDouble();
 
-			int nSides = numberOfSides(innerAngle);
-			//System.out.println("sides: "+nSides);
-			//System.out.println("Length: "+lengthOfSide);
-			double radius = interiorRadius(nSides);
+			double nSides = numberOfSides(innerAngle);
+
+			double radius = interiorRadius(lengthOfSide,innerAngle);
 			double circleArea = areaOfCircle(radius);
 			//System.out.println("Cir area: "+circleArea);
 			double polArea = areaOfPolygon(nSides,radius,lengthOfSide);
@@ -23,7 +22,7 @@ public class COJ3424{
 		}
 	}
 
-	public static double areaOfPolygon(int sides,double apothem,int lengthOfSides){
+	public static double areaOfPolygon(double sides,double apothem,double lengthOfSides){
 		return (sides*lengthOfSides*apothem)/2;
 	}
 
@@ -31,14 +30,14 @@ public class COJ3424{
 		return Math.PI*radius*radius;
 	}
 
-	public static double interiorRadius(int nsides){
-		double ang = 360/nsides;
-		ang/=2;
-		double newAng = Math.toRadians(ang);
-		return nsides/Math.tan(ang);
+	public static double interiorRadius(double lengthOfSides,double angle){
+		double alpha = Math.toRadians(180-90-(angle/2));
+		double beta = Math.toRadians(angle/2);
+		double newL = lengthOfSides/2;
+		return (newL*Math.sin(beta))/Math.sin(alpha);
 	}
 
-	public static int numberOfSides(int angle){
+	public static double numberOfSides(double angle){
 		return (360)/(180-angle);
 	}
 }
