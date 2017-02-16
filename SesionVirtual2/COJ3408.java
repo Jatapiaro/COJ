@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Locale;
-///no aceptado aún
+
 public class COJ3408{
 	public static void main(String[] args) {
 
@@ -10,11 +10,11 @@ public class COJ3408{
 		String maxID = "";
 		double max = -1;
 
-		sc.next();
+		
 
 		for(int i=0;i<casos;i++){
+			String id = sc.next();
 			String[] s = sc.nextLine().split("\\s");
-			String id = s[0];
 			double x1 = Integer.parseInt(s[1]);
 			double y1 = Integer.parseInt(s[2]);
 			double x2 = Integer.parseInt(s[3]);
@@ -28,6 +28,7 @@ public class COJ3408{
 
 			double tot = Math.abs((p1-p2+p3)/2);
 			if(tot>max){
+				//System.out.println(id);
 				maxID = id;
 				max = tot;
 			}
