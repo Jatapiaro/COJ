@@ -1,25 +1,22 @@
-import java.util.*;
-//No aceptado
+import java.util.Scanner;
 public class COJ2105{
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		Scanner sc2 = new Scanner(System.in);
 
 		while(sc.hasNext()){
 			
 			int n = sc.nextInt();
 			int m = sc.nextInt();
 
-			//sc.next();
-
 			int totalT = 0;
 
 			char[][] grid = new char[n][m];
-			//ArrayList<String> g = new ArrayList<String>();
+
+			sc.nextLine();
 
 			for(int i=0;i<n;i++){
-				char[] c = sc2.nextLine().toCharArray();
+				char[] c = sc.nextLine().toCharArray();
 				for(int j=0;j<m;j++){
 					if(c[j] == '+'){
 						totalT++;
@@ -40,12 +37,9 @@ public class COJ2105{
 						int yP1 = j+1;
 						int yM1	= j-1;
 
-						if(xP1 >= n || xM1 < 0 || yP1 >= m || yM1 < 0){
-
-						}else{
+						if(xP1 >= 0 && xP1<n && xM1 >= 0 && xM1<n && yP1 >= 0 && yP1<m && yM1 >= 0 && yM1<m){
 							if(grid[i][yP1]=='+' && grid[i][yM1]=='+' && grid[xP1][j]=='+' && grid[xM1][j]=='+'){
 								tot++;
-								///System.out.println("Esta en ["+i+","+j+"]");
 							}
 						}
 
@@ -53,7 +47,7 @@ public class COJ2105{
 
 				}
 			}
-			
+
 			System.out.println((totalT-tot));
 
 		}
